@@ -1,0 +1,97 @@
+<mat-card>
+  <mat-card-content>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="warn" (click)="openDialog()">Add Activity</button>
+  </mat-card-content>
+</mat-card>
+<div class="container">
+  <mat-spinner color="primary" [diameter]="36" *ngIf="disabled"></mat-spinner>
+  <div style="margin-top: 10px;">
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> Description </th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+        <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef> Created At </th>
+          <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+        </ng-container>
+        <ng-container matColumnDef="active">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.active}} </td>
+        </ng-container>
+        <ng-container matColumnDef="url">
+          <th mat-header-cell *matHeaderCellDef> URL </th>
+          <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="editActivity(element)" color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteActivity(element.id)" color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngFor="let activity of assignedActivities.activities">
+  <p>{{activity.name}}</p>
+</div> -->
+<!-- <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let activity of activities">
+          <td>{{activity.name}}</td>
+          <td>{{activity.description}}</td>
+          <td>{{activity.created_at}}</td>
+          <td>{{activity.updated_at}}</td>
+          <td>
+            <a class="btn btn-primary">Edit</a>
+            <a class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
+    <!-- <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="activity.name" name="name" class="form-control" id="name" placeholder="Enter name">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" [(ngModel)]="activity.description" name="description" class="form-control" id="description" placeholder="Enter description">
+      </div>
+      <div class="form-group">
+        <label for="description">URL</label>
+        <input type="text" [(ngModel)]="activity.url" name="url" class="form-control" id="url" placeholder="Enter URL">
+      </div>
+      <div class="form-group">
+        <label for="active">Active</label>
+        <input type="checkbox" id="active" [(ngModel)]="activity.active" name="active">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="addActivity()">Submit</button>
+    </form> -->
+  

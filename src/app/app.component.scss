@@ -1,0 +1,16 @@
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+mat-drawer {
+    width: 260px;
+}
+
+mat-drawer-container{
+    height: 100%;
+}
+

@@ -1,0 +1,21 @@
+<mat-nav-list>
+    <div class="logo py-4">
+        <img src="" alt="">
+    </div>
+    <mat-divider></mat-divider>
+    <h2 matSubHeader class="m-2">Welcome to the App</h2>
+    <div class="">
+        <mat-spinner color="success" [diameter]="36" *ngIf="disabled"></mat-spinner>
+        <mat-card *ngFor="let activity of assignedActivities?.activities">
+            <span class="full-width" *ngIf="isExpanded || isShowing" routerLinkActive="list-item-active" (click)="navigateTo(activity.url)">{{activity.name}}</span>
+          </mat-card>
+          <a mat-list-item routerLinkActive="list-item-active"><mat-icon>account_circle</mat-icon>Profile</a>
+          <!-- <a mat-list-item routerLink="/role" routerLinkActive="list-item-active"><mat-icon>account_circle</mat-icon>Profile</a> -->
+        <!-- <span class="full-width" *ngIf="isExpanded || isShowing" routerLinkActive="list-item-active"><mat-icon>settings</mat-icon>User Management</span> -->
+        <!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon> -->
+        <!-- <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+				<a mat-list-item href="..." routerLinkActive="list-item-active"><mat-icon>people</mat-icon>User</a>
+                <a mat-list-item routerLink="/activity" routerLinkActive="list-item-active"><mat-icon>toc</mat-icon>Activity</a>
+		</div> -->
+    </div>
+</mat-nav-list>

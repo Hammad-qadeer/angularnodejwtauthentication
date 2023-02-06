@@ -1,0 +1,59 @@
+<h1 mat-dialog-title >Portal Roles & Rights</h1>
+<div mat-dialog-content>
+    <form [formGroup]="assignActivity">
+        <mat-form-field>
+            <mat-label>Select Role</mat-label>
+            <mat-select formControlName="role_id">
+              <mat-option *ngFor="let role of userRoles?.roles" [value]="role.id">{{role.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+            <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+                User Management
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+                Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description> -->
+            </mat-expansion-panel-header>
+            <mat-action-row>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Activity Name</th>
+                        <th>Create</th>
+                        <th>Read</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let activity of userActivities; let i=index">
+                      <tr>
+                        <td>
+                          <mat-checkbox formControlName="activity_id" [value]="activity.id">{{activity.name}}</mat-checkbox>                         
+                        </td>
+                        <td>
+                            <mat-checkbox formControlName="isCreate"></mat-checkbox>
+                        </td>
+                        <td>
+                            <mat-checkbox formControlName="isRead"></mat-checkbox>
+                        </td>
+                        <td>
+                            <mat-checkbox formControlName="isUpdate"></mat-checkbox>
+                        </td>
+                        <td>
+                            <mat-checkbox formControlName="isDelete"></mat-checkbox>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {{this.assignActivity.value | json}}
+                  
+              </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+          <button class="btn btn-sm btn-success m-2"  (click)="onAssignActivity()">Assign Activity</button>
+    </form>
+</div>

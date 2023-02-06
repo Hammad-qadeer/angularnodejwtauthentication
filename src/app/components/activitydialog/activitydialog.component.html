@@ -1,0 +1,37 @@
+<h1 mat-dialog-title >Activities</h1>
+<div mat-dialog-content>
+    <form [formGroup]="activityForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Activity Name</mat-label>
+            <input formControlName="name" matInput placeholder="Name">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Activity Description</mat-label>
+            <input formControlName="description" matInput placeholder="Description">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Activity URL</mat-label>
+            <input formControlName="url" matInput placeholder="url">
+          </mat-form-field>
+
+          <mat-checkbox formControlName="isParent">Is Parent</mat-checkbox>
+
+          <section class="example-section">
+            <mat-checkbox class="example-margin" formControlName="active">Is Active</mat-checkbox>
+          </section>
+
+          <mat-form-field>
+            <mat-label>Parent Activity</mat-label>
+            <mat-select [(ngModel)]="selectedParentId" formControlName="parent_id">
+              <mat-option *ngFor="let activity of assignedActivities.activities" [value]="activity.id">{{activity.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </form>
+    <div mat-dialog-action [align]="'start'">
+        <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addActivity()">{{actionBtn}}</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    </div>
+</div>
+
