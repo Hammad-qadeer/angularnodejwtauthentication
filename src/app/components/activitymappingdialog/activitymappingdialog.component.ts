@@ -37,12 +37,6 @@ export class ActivitymappingdialogComponent {
     this.getActivities();
   }
 
-  // isAllSelected() {
-  //   const numSelected = this.selection.selected.length;
-  //   const numRows = this.dataSource.data.length;
-  //   return numSelected === numRows;
-  // }
-
   onAssignActivity() {
     debugger
     const data = this.assignActivity.value;
